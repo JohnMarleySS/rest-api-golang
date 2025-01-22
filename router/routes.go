@@ -6,33 +6,24 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func InitializeRoutes(router *gin.Engine) {
-	v1 := router.Group("/api/v1")
-	{
-		v1.GET("/opening", func(ctx *gin.Context) {
-			ctx.JSON(http.StatusOK, gin.H{
-				"msg": "GET opening",
-			})
-		})
-		v1.POST("/opening", func(ctx *gin.Context) {
-			ctx.JSON(http.StatusOK, gin.H{
-				"msg": "POST opening",
-			})
-		})
-		v1.DELETE("/opening", func(ctx *gin.Context) {
-			ctx.JSON(http.StatusOK, gin.H{
-				"msg": "DELETE opening",
-			})
-		})
-		v1.PUT("/opening", func(ctx *gin.Context) {
-			ctx.JSON(http.StatusOK, gin.H{
-				"msg": "PUT opening",
-			})
-		})
-		v1.GET("/openings", func(ctx *gin.Context) {
-			ctx.JSON(http.StatusOK, gin.H{
-				"msg": "GET opening",
-			})
-		})
-	}
+func Routers() {
+	r := gin.Default()
+
+	r.GET("/tasks", func(c *gin.Context) {
+		c.String(http.StatusOK, "GET")
+	})
+
+	r.POST("/tasks", func(c *gin.Context) {
+		c.String(http.StatusOK, "POST")
+	})
+
+	r.PUT("tasks/{id}", func(c *gin.Context) {
+		c.String(http.StatusOK, "PUT")
+	})
+
+	r.DELETE("/tasks/{id}", func(c *gin.Context) {
+		c.String(http.StatusOK, "DELETE")
+	})
+
+	r.Run(":8080")
 }
