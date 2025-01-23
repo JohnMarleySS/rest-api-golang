@@ -1,7 +1,7 @@
 package main
 
-import "github.com/JohnMarleySS/rest-api-golang/router"
+import "github.com/JohnMarleySS/rest-api-golang/server"
 
 func main() {
-	router.Routers()
+	server.RunServer()
 }
